@@ -28,19 +28,29 @@ def main():
             playing = False
 
 
+def getMove():
+    userInput = input(' 1) Rock  2) Paper  3) Scissors \n')
+
+    try:
+        userInput = int(userInput)
+    except ValueError:
+        print("Invalid move")
+        return getMove()
+
+    if userInput > 3 or userInput < 0:
+        print("Invalid range")
+        return getMove()
+    
+    return userInput
 
 def gameRound():
     global playerScore
     global comScore
-    playerWeapon = int(input(' 1) Rock  2) Paper  3) Scissors \n'))
+    playerWeapon = getMove()
 
-    #Pick Weapons
-    while weapons[int(playerWeapon)] not in weapons or playerWeapon == 0:
-        print('Not a choice, pick again.')
-        playerWeapon = input()
     comWeapon = random.randrange(1,3)
-    print(f'You chose {weapons[int(playerWeapon)]}')
-    print(f'Your enemy brought {weapons[int(comWeapon)]}')
+    print(f'You chose {weapons[playerWeapon]}')
+    print(f'Your enemy brought {weapons[comWeapon]}')
 
     #Determine Winner
     if playerWeapon - comWeapon == 0 or playerWeapon - comWeapon == 3 :
