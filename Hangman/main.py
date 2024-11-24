@@ -119,8 +119,3 @@ def HM():
 ## Place function call to automatically run your code when accessing your script file.
 clear_console()
 HM()
-
-
-
-
-
